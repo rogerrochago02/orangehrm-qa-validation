@@ -1,12 +1,13 @@
-# QA-2026-002 — OrangeHRM (PIM e Leave)
+# OrangeHRM — admissão e férias
 
-Teste automatizado headless da demo pública do OrangeHRM OS 5.9, em PIM e Leave.
-Prova que 9 casos executados passaram em 2026-11-13, sem defeito confirmado.
-Não cobre Time, busca como sessão própria, aprovação por outro perfil nem relatórios de Leave.
+Testes na demo pública do OrangeHRM OS 5.9, um sistema de RH, nas áreas de admissão e férias.
+9 casos executados em 13/11/2026, em navegador sem janela: 9 passaram, 0 erros.
+
+Repositório: https://github.com/rogerrochago02/orangehrm-qa-validation
 
 ## Resultado
 
-9 casos, 9 `passed`, 0 erros, 12 prints, 2026-11-13. Fonte: `TEST_CASES.md`, `BUGS.md`, `EVIDENCE/HEADLESS/` e `EXECUTION_LOG_2026-11-13.txt`.
+9 casos, 9 passaram, 0 erros, 12 prints, 13/11/2026. Fonte: `TEST_CASES.md`, `BUGS.md`, `EVIDENCE/HEADLESS/` e `EXECUTION_LOG_2026-11-13.txt`.
 
 ## Como rodar
 
@@ -15,26 +16,22 @@ npm install --prefix tools
 node tools/sd-ohrm.mjs
 ```
 
-A senha do `Admin` é lida da tela e não é gravada.
-
-## Limitações
-
-- Time (CH-03) e busca como sessão própria (CH-04) não foram executadas.
-- Demo compartilhada: os dados podem mudar entre execuções.
-- Depende de `playwright-core` em `tools/` (Playwright 1.64.1 headless, Chromium 156.0.8078.4).
+O script faz login com `Admin` e executa os 9 casos. A senha é lida da tela e não fica salva.
 
 ## O que ficou fora
 
-Time, busca como sessão própria, aprovação por outro perfil, relatórios de Leave.
+Time, busca como sessão própria, aprovação por outro perfil e relatórios de Leave.
+
+## Limitações
+
+- Time e busca não foram testados.
+- A demo é compartilhada: os dados podem mudar.
+- Precisa instalar o Playwright antes de rodar.
 
 ## Dados na demo
 
-Ficaram `QA2026H Analista` (277/0478), entitlement de 5 dias e licença de 2 dias em 07–08/12/2026; da sessão anterior, `QA2026 Analista` (186/0388) e 5 licenças de 1 dia.
+Ficaram na demo o funcionário `QA2026H Analista` (ID 0478), um direito de 5 dias e uma licença de 2 dias em 07 e 08/12/2026.
 
 ## Evidência
 
-`EVIDENCE/HEADLESS/` (12 prints) e `EXECUTION_LOG_2026-11-13.txt` (log bruto).
-
-## Autor
-
-Roger Rocha
+12 prints em `EVIDENCE/HEADLESS/` e o log em `EXECUTION_LOG_2026-11-13.txt`.

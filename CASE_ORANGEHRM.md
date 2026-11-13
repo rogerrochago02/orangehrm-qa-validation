@@ -2,30 +2,29 @@
 
 ## 1. O site
 
-OrangeHRM OS 5.9, demo pública de avaliação: https://opensource-demo.orangehrmlive.com
-Sistema de RH de código aberto. Áreas testadas: cadastro de funcionário (PIM) e licença (Leave).
-Rodou em Windows 11 Pro, Chromium 156.0.8078.4 empacotado no Playwright 1.64.1, headless, em 2026-11-13.
+OrangeHRM é um sistema de RH de código aberto. A versão testada é a 5.9, na demo pública: https://opensource-demo.orangehrmlive.com
+Foram testados o cadastro de funcionário (PIM) e as férias (Leave).
 
 ## 2. O que foi testado
 
-9 casos — 9 `passed`, 0 `failed`, 0 `blocked` (fonte: `summary` do log de 2026-11-13).
+9 casos: 9 `passed`, 0 `failed`, 0 `blocked` (fonte: resumo do log de 13/11/2026).
 
-- TC-01 — admissão sem nome: recusou e marcou First/Last Name. `passed`.
-- TC-02 — criar funcionário: gravou e abriu o cadastro (ID 0478). `passed`.
-- TC-03 — filtro por ID existente: 1 linha. `passed`.
-- TC-04 — filtro por ID inexistente: 0 linhas. `passed`.
-- TC-05 — ID duplicado: recusou com "Employee Id already exists". `passed`.
-- TC-06 — direito de 5 dias: gravou e o saldo apareceu. `passed`.
-- TC-07 — saldo ao atribuir licença: 5.00 dias. `passed`.
-- TC-08 — licença de 2 dias úteis (7 e 8/12): gravou 2.00 dias, saldo 3.00. `passed`.
-- TC-09 — pedido sobreposto: recusou. `passed`.
+- TC-01 — cadastro sem nome: recusou e pediu nome e sobrenome.
+- TC-02 — cadastro completo: gravou e abriu a ficha (matrícula 0478).
+- TC-03 — busca por matrícula existente: achou 1 linha.
+- TC-04 — busca por matrícula inexistente: 0 linhas.
+- TC-05 — matrícula repetida: recusou.
+- TC-06 — direito a férias (entitlement) de 5 dias: gravou e apareceu no saldo.
+- TC-07 — saldo ao pedir férias: 5,00 dias.
+- TC-08 — férias de 2 dias (7 e 8/12): gravou 2 dias e o saldo caiu para 3,00.
+- TC-09 — pedido sobreposto: recusou.
 
-Limites: um navegador só (Chromium headless); demo compartilhada, e os registros criados ficam nela; busca por nome sem caso próprio.
-Rodada de 11/11: usou Chrome real e não vale como evidência. TC-08 estava `blocked` e passou — o erro era do método de digitação.
+Rodou em Chromium headless (navegador sem janela visível), no Windows 11, em 13/11/2026.
+Limites: um navegador só; a demo é compartilhada e o que os testes criaram continua nela; busca por nome não teve caso próprio.
 
 ## 3. Erros encontrados
 
-0 erros. A recusa de pedido sobreposto usa mensagem genérica ("Failed to Submit"), sem citar o motivo: observação, não erro.
+0 erros. A recusa de pedido sobreposto mostra "Failed to Submit", sem dizer o motivo: mensagem fraca, não erro.
 
 ## 4. Como reproduzir
 
