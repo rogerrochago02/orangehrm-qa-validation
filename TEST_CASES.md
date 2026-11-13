@@ -1,4 +1,4 @@
-# Casos de teste — OrangeHRM (admissão e férias)
+# Casos de teste — OrangeHRM
 
 9 casos, todos executados em 13/11/2026: 9 `passed`, 0 `failed`, 0 `blocked`.
 
