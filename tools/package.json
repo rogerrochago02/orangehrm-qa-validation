@@ -1,0 +1,9 @@
+{
+  "name": "qa-2026-002-tools",
+  "private": true,
+  "type": "module",
+  "description": "Execucao headless dos 9 casos do QA-2026-002 (OrangeHRM demo)",
+  "devDependencies": {
+    "playwright-core": "1.64.1"
+  }
+}

@@ -1,0 +1,25 @@
+QA-2026-002 - LOG DE EXECUCAO HEADLESS
+Data/hora: 2026-11-13 13:41 (-03:00)
+Comando: node tools/sd-ohrm.mjs   (executado em PROJECTS\QA-2026-002)
+Dependencia: tools\package.json -> playwright-core 1.64.1 (npm install em tools)
+Navegador: Chromium empacotado do Playwright (headless), sem Chrome do sistema, sem remote debugging
+Node: v25.9.0
+URL: https://opensource-demo.orangehrmlive.com (OrangeHRM OS 5.9)
+Saida abaixo sem edicao.
+{"step":"browser","version":"156.0.8078.4","headless":true,"channel":"bundled-chromium"}
+{"case":"TC-01","status":"passed","ok":true,"expected":"bloquear e marcar First/Last Name","obtained":"url=/index.php/pim/addEmployee, erros=[\"Required\",\"Required\"]","ms":9233}
+{"case":"TC-02","status":"passed","ok":true,"expected":"criar funcionario e abrir Personal Details","obtained":"empNumber=277, id=0478, heading=\"QA2026H Analista\"","ms":6296}
+{"case":"TC-03","status":"passed","ok":true,"expected":"1 linha com o funcionario criado","obtained":"1 linha(s): 0478 | QA2026H | Analista","ms":3933}
+{"case":"TC-04","status":"passed","ok":true,"expected":"0 linhas para ID inexistente","obtained":"0 linha(s)","ms":4336}
+{"case":"TC-05","status":"passed","ok":true,"expected":"bloquear ID duplicado","obtained":"url=/index.php/pim/addEmployee, erros=[\"Employee Id already exists\"]","ms":3761}
+{"case":"TC-06","status":"passed","ok":true,"expected":"gravar 5 dias de direito","obtained":"toast=\"Success Successfully Saved ×\"","ms":8651}
+{"case":"TC-07","status":"passed","ok":true,"expected":"saldo 5.00 dias","obtained":"Leave Balance | 5.00 Day(s)","ms":6859}
+{"case":"TC-08","status":"passed","ok":true,"expected":"gravar 2 dias uteis (07 e 08/12)","obtained":"duracao=\"\", toast=\"Success Successfully Saved ×\", lista=2026-07-12 to 2026-08-12 | QA2026H Analista | CAN - Vacation | 3.00 | 2.00 | Scheduled (2.00)","ms":32030}
+{"case":"TC-09","status":"passed","ok":true,"expected":"bloquear pedido sobreposto","obtained":"toast=\"Warning Failed to Submit ×\"","ms":10575}
+{"summary":{"total":9,"passed":9,"failed":0}}
+
+===== EXECUCAO COMPLEMENTAR TC-08 (2026-11-13 13:45) =====
+Comando: node tools/capture-tc08.mjs   (captura de POST/response do assign leave)
+{"step":"form","from":"2026-09-12","to":"2026-10-12"}
+{"step":"capture","request":{"method":"POST","url":"https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/employees/leave-requests","body":"{\"leaveTypeId\":6,\"fromDate\":\"2026-12-09\",\"toDate\":\"2026-12-10\",\"comment\":null,\"empNumber\":277}"},"response":{"status":200,"body":"{\"data\":{\"id\":111,\"leaveType\":{\"id\":6,\"name\":\"CAN - Vacation\",\"deleted\":false},\"dateApplied\":\"2026-12-09\"},\"meta\":{\"empNumber\":277},\"rels\":[]}"}}
+{"step":"leave-list","rows":["2026-09-12 to 2026-10-12 | QA2026H Analista | CAN - Vacation | 1.00 | 2.00 | Scheduled (2.00)","2026-07-12 to 2026-08-12 | QA2026H Analista | CAN - Vacation | 1.00 | 2.00 | Scheduled (2.00)"]}

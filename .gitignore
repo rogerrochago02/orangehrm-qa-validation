@@ -1,0 +1,9 @@
+node_modules/
+tools/node_modules/
+test-results/
+playwright-report/
+blob-report/
+.env
+ARCHIVE_FORMATO_LONGO/
+ARCHIVE_2026-11-11_CHROME/
+EVIDENCE/NAO_USAR_CHROME_2026-11-11/
