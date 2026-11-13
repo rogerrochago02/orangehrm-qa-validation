@@ -1,4 +1,4 @@
-# BUGS — OrangeHRM
+# Bugs — OrangeHRM
 
 ## 0 bugs
 
